@@ -1,0 +1,23 @@
+{
+  "name": "b3c",
+  "version": "0.1.2",
+  "description": "ZOVI main website app",
+  "devDependencies": {
+    "grunt": "git://github.com/gruntjs/grunt.git#2943060eaa7107fea77f4507437c5f087995eafa",
+    "grunt-contrib-jshint": "git://github.com/gruntjs/grunt-contrib-jshint.git#ccc60db1bfdfff2a1deea33e574fada93f1f4620",
+    "grunt-contrib-sass": "git://github.com/gruntjs/grunt-contrib-sass.git#aa0f821697e3f1a5046ae4ed50e9358967d9bdd7",
+    "grunt-sass": "git://github.com/sindresorhus/grunt-sass.git#c5e8ab70038c4528d7e22dd481f6316041fb1d54",
+    "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#5f747f628400948c40e036036672743dfb72eb84",
+    "grunt-contrib-watch": "git://github.com/gruntjs/grunt-contrib-watch.git#808d4a32d7c4f3151a95ff02760c82fb8ede3622",
+    "grunt-mocha": "git://github.com/kmiyashiro/grunt-mocha.git#58248fc03ae2335fa0930e591796fc80a3b0d497",
+    "grunt-contrib-imagemin": "git://github.com/gruntjs/grunt-contrib-imagemin.git#f7a3800c6372a22c890b25e2013ae3abd33d79a0",
+    "grunt-contrib-handlebars": "git://github.com/gruntjs/grunt-contrib-handlebars.git#2ddd13dcf4411e866ab3263ed0bc8922bc9664cd",
+    "grunt-contrib-htmlmin": "git://github.com/gruntjs/grunt-contrib-htmlmin.git#7464fde8c641f50c69c6ea9a5c201538bd15d5b2",
+    "grunt-contrib-copy": "git://github.com/ctalkington/grunt-contrib-copy.git#bffcef8680ead762f32b3bbd6bc0472b03f35640",
+    "grunt-contrib-clean": "git://github.com/gruntjs/grunt-contrib-clean.git#b0d55bc934cec6715bab364e975fd1500925421c",
+    "grunt-contrib-yuidoc": "git://github.com/gruntjs/grunt-contrib-yuidoc.git#a384fcc3a9e3f135248c065a729c6e8abf472885",
+    "grunt-usemin": "git://github.com/yeoman/grunt-usemin.git#af90cb87bf54975273bd29732dbc18061f423307",
+    "grunt-hashres": "git://github.com/Luismahou/grunt-hashres.git#3f93a79dddd1569eae3163d70fb8026d2ce77512",
+    "grunt-plato": "~0.1.2"
+  }
+}
