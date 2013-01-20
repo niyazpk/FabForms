@@ -127,6 +127,47 @@ describe('FabForm', function() {
             expect(html).to.be.equals(expected);
         });
 
+
+        it('checkbox item', function() {
+
+            var expected = '<div class="form-item offers check"><label for="offers">It\'s ok to send me some cool offers</label><span class="offers" item-type="check">Niyaz</span><input type="checkbox" data-disablevalidation="false" data-datatype="check" class="form-item-input checkbox offers" name="offers" value="Niyaz" checked="checked" ></div>';
+
+            var html = getformItemHTML('offers', {
+                offers: {
+                    type: 'check',
+                    label: "It's ok to send me some cool offers",
+                    'default': 1
+                },
+            }, 'Niyaz');
+
+            expect(html).to.be.equals(expected);
+        });
+
+
+        it('select item', function() {
+
+            var expected = '<div class="form-item year select"><label for="year">Select Your Year</label><div class="required">*</div><span class="year" item-type="select">2012</span><select data-disablevalidation="false" data-datatype="select" class="form-item-input year" name="year"><option value="placeholder">YYYY</option><option selected value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option></select></div>';
+
+            var _DD = {
+                years: [{
+                    value: 'placeholder',
+                    text: 'YYYY'
+                }].concat([2012, 2013, 2014, 2015])
+            };
+
+            var html = getformItemHTML('year', {
+                year: {
+                    type: "select",
+                    label: "Select Your Year",
+                    placeholder: "Select Year",
+                    options: _DD.years,
+                    required: true
+                },
+            }, 2012);
+
+            expect(html).to.be.equals(expected);
+        });
+
     });
 
 

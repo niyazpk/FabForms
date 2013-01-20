@@ -44,38 +44,41 @@
         // for displaying data
         html += '<span class="' + item + '" item-type="' + dd[item].type + '">' + value + '</span>';
 
-        var commonStr =  ' data-disablevalidation="{{disableValidation}}" data-datatype="{{datatype}}" class="{{class}}" name="{{name}}" value="{{value}}"';
+        var commonStr =  ' data-disablevalidation="{{disableValidation}}" data-datatype="{{datatype}}" class="{{class}}" name="{{name}}"';
         var inputClass;
 
         // for  editing data
         switch (dd[item].type) {
         case 'hidden':
-            html += '<input type="hidden"' + commonStr + '>';
+            html += '<input type="hidden"' + commonStr + ' value="{{value}}">';
             inputClass = [item];
             break;
         case 'text':
-            html += ['<input type="text"' + commonStr + ' placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            html += ['<input type="text"' + commonStr + ' value="{{value}}" placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
             inputClass = ['form-item-input', 'text', item];
             break;
         case 'password':
-            html += ['<input type="password"' + commonStr + ' placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            html += ['<input type="password"' + commonStr + ' value="{{value}}" placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
             inputClass = ['form-item-input', 'text', 'password', item];
             break;
         case 'textarea':
-            html += ['<textarea data-disablevalidation="{{disableValidation}}" data-datatype="{{datatype}}" class="{{class}}" name="{{name}}" placeholder="', placeholder, '">', value, '</textarea>'].join('');
+            html += ['<textarea' + commonStr + ' placeholder="', placeholder, '">{{value}}</textarea>'].join('');
             inputClass = ['form-item-input', 'textarea', item];
             break;
         case 'check':
-            html += ['<input type="checkbox" data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input checkbox ', item, '" value="', value, '" name="', item, '" ', value ? 'checked="checked" ' : '', '>'].join('');
+            html += ['<input type="checkbox"' + commonStr + ' value="{{value}}" ', value ? 'checked="checked" ' : '', '>'].join('');
+            inputClass = ['form-item-input', 'checkbox', item];
             break;
         case 'static':
-            html += ['<input type="text" data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input text static ', item, '" name="', item, '" value="', value, '" disabled size="30">'].join('');
+            html += ['<input type="text"' + commonStr + ' value="{{value}}" disabled size="30">'].join('');
+            inputClass = ['form-item-input', 'text', 'static', item];
             break;
         case 'editable-combo':
-            html += ['<input type="text" data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input editable-combo-input ', item, '" name="', item, '" value="', value, '" placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            html += ['<input type="text"' + commonStr + ' value="{{value}}" placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            inputClass = ['form-item-input', 'editable-combo-input', item];
             break;
         case 'select':
-            html += '<select data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" name="' + item + '" class="form-item-input ' + item + '">';
+            html += '<select' + commonStr + '>';
 
             var options = dd[item].options;
             var selected;
@@ -84,19 +87,21 @@
                 return obj === Object(obj);
             };
 
-            for (var option in options) {
+            for(var option in options) {
                 var x = options[option];
 
-                if(isObject(x)){
-                    selected = (x.value === value ? 'selected' : '');
-                    html += '<option ' + selected + ' value="' + x.value + '">' + x.text + '</option>';
-                }else{
-                    selected = (x === value ? 'selected' : '');
-                    html += '<option ' + selected + ' value="' + x + '">' + x + '</option>';
+                if(isObject(x)) {
+                    selected = (x.value === value ? ' selected' : '');
+                    html += '<option' + selected + ' value="' + x.value + '">' + x.text + '</option>';
+                } else {
+                    selected = (x === value ? ' selected' : '');
+                    html += '<option' + selected + ' value="' + x + '">' + x + '</option>';
                 }
             }
 
             html += '</select>';
+
+            inputClass = ['form-item-input', item];
             break;
         case 'image':
             html += ['<img class="form-item-input image ', item, '" name="', item, '" src="', value, '">'].join('');
