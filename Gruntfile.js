@@ -9,9 +9,8 @@ module.exports = function(grunt) {
     watch: {
 
       js: {
-        files: ['html/js/*.js', 'html/js/lib/*.js', 'tests/spec/*.js'],
-        tasks: ['jshint']
-        // tasks: ['jshint', 'mocha', 'yuidoc']
+        files: ['src/*.js', 'tests/spec/*.js'],
+        tasks: ['test']
       },
 
       sass: {

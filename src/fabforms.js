@@ -10,10 +10,10 @@
         return json;
     };
 
-    function getformItemHTML(item, dd, value) {
+    getformItemHTML = function(item, dd, value) {
 
         value = value || defaultValue;
-        var klass = dd[item].klass || '';   // any additional classes provided ?
+        var klass = dd[item].klass;   // any additional classes provided ?
         var defaultValue = dd[item]['default'] || '';
         var placeholder = dd[item].placeholder || '';
         var datatype = (dd[item].datatype && dd[item].datatype.type) || dd[item].type;
@@ -23,7 +23,14 @@
         var onValue = dd[item].onValue || 1;
         var offValue = dd[item].offValue || 0;
 
-        html = '<div class="form-item ' + item + ' ' + klass + ' ' +  dd[item].type + '">';
+        var formItemClass = ['form-item'];
+        formItemClass.push(item);
+        if(klass) {
+            formItemClass.push(klass);
+        }
+        formItemClass.push(dd[item].type);
+
+        html = '<div class="' + formItemClass.join(' ') + '">';
 
         // label for the form field
         if ( ! _.isUndefined(dd[item].label) ) {
@@ -37,19 +44,22 @@
         // for displaying data
         html += '<span class="' + item + '" item-type="' + dd[item].type + '">' + value + '</span>';
 
-        var commonStr =  'data-disablevalidation="{{disableValidation}}" data-datatype="{{datatype}}" class="{{class}}" name="{{name}}" value="{{value}}" ';
+        var commonStr =  ' data-disablevalidation="{{disableValidation}}" data-datatype="{{datatype}}" class="{{class}}" name="{{name}}" value="{{value}}"';
+        var inputClass;
 
         // for  editing data
         switch (dd[item].type) {
         case 'hidden':
-            html += '<input type="hidden" data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="' + item + '" name="' + item + '" value="' + value + '">';
-            // html += '<input type="hidden"' + commonStr + '">';
+            html += '<input type="hidden"' + commonStr + '>';
+            inputClass = [item];
             break;
         case 'text':
-            html += ['<input type="text" data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input text ', item, '" name="', item, '" value="', value, '" placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            html += ['<input type="text"' + commonStr + ' placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            inputClass = ['form-item-input', 'text', item];
             break;
         case 'password':
-            html += ['<input type="password" data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input text password ', item, '" name="', item, '" value="', value, '" placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            html += ['<input type="password"' + commonStr + ' placeholder="', placeholder, '" size="30" maxlength="', dd[item].maxlength, '">'].join('');
+            inputClass = ['form-item-input', 'text', 'password', item];
             break;
         case 'textarea':
             html += ['<textarea data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input textarea ', item, '" name="', item, '" placeholder="', placeholder, '">', value, '</textarea>'].join('');
@@ -98,8 +108,14 @@
         }
         html += '</div>';
 
+        html = html.replace('{{disableValidation}}', disableValidation);
+        html = html.replace('{{datatype}}', datatype);
+        html = html.replace('{{class}}', inputClass.join(' '));
+        html = html.replace('{{name}}', item);
+        html = html.replace('{{value}}', value);
+
         return html;
-    }
+    };
 
 
     getFormHTML = function(data, reference, settings) {
