@@ -37,7 +37,7 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      all: ['html/js/*.js', 'html/js/lib/mixins.js', 'html/js/lib/cookie-wrapper.js', 'html/js/lib/jquery-tabs.js'],
+      all: ['src/fabforms.js'],
       options: {
         multistr: true,
         browser: true,
@@ -71,24 +71,7 @@ module.exports = function(grunt) {
     sass: {
       dev: {
         files: {
-          'html/css/catalog.css': 'html/sass/catalog.scss',
-          'html/css/detail.css': 'html/sass/detail.scss',
-          'html/css/bag.css': 'html/sass/bag.scss',
-          'html/css/style.css': 'html/sass/style.scss',
-          'html/css/checkout.css': 'html/sass/checkout.scss',
-          'html/css/popup.css': 'html/sass/popup.scss',
-          'html/css/footer.css': 'html/sass/footer.scss',
-          'html/css/login.css': 'html/sass/login.scss',
-          'html/css/checkout-address.css': 'html/sass/checkout-address.scss',
-          'html/css/order-confirmation.css': 'html/sass/order-confirmation.scss',
-          'html/css/my-account.css': 'html/sass/my-account.scss',
-          'html/css/password.css': 'html/sass/password.scss',
-          'html/css/gallery.css': 'html/sass/gallery.scss',
-          'html/css/order-detail.css': 'html/sass/order-detail.scss',
-          'html/css/ie.css': 'html/sass/ie.scss',
-          'html/css/sale.css': 'html/sass/sale.scss',
-          'html/css/feed.css': 'html/sass/feed.scss',
-          'html/css/bankoffer.css': 'html/sass/bankoffer.scss'
+          'html/css/style.css': 'html/sass/style.scss'
         }
       }
     },

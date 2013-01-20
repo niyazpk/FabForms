@@ -14,7 +14,7 @@
 
         value = value || defaultValue;
         var klass = dd[item].klass || '';   // any additional classes provided ?
-        var defaultValue = dd[item].default || '';
+        var defaultValue = dd[item]['default'] || '';
         var placeholder = dd[item].placeholder || '';
         var datatype = (dd[item].datatype && dd[item].datatype.type) || dd[item].type;
         var disableValidation = dd[item].disableValidation || false;
@@ -123,7 +123,7 @@
         html += '</div></form>';
 
         return html;
-    }
+    };
 
 
     $.fn.renderEditableData = function (data, reference, settings) {

@@ -9,7 +9,7 @@
     "grunt-sass": "git://github.com/sindresorhus/grunt-sass.git#c5e8ab70038c4528d7e22dd481f6316041fb1d54",
     "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#5f747f628400948c40e036036672743dfb72eb84",
     "grunt-contrib-watch": "git://github.com/gruntjs/grunt-contrib-watch.git#808d4a32d7c4f3151a95ff02760c82fb8ede3622",
-    "grunt-mocha": "git://github.com/kmiyashiro/grunt-mocha.git#58248fc03ae2335fa0930e591796fc80a3b0d497",
+    "grunt-mocha": "git://github.com/kmiyashiro/grunt-mocha.git#c14ec2b238ad53063687a360eee8289242302ce6",
     "grunt-contrib-imagemin": "git://github.com/gruntjs/grunt-contrib-imagemin.git#f7a3800c6372a22c890b25e2013ae3abd33d79a0",
     "grunt-contrib-handlebars": "git://github.com/gruntjs/grunt-contrib-handlebars.git#2ddd13dcf4411e866ab3263ed0bc8922bc9664cd",
     "grunt-contrib-htmlmin": "git://github.com/gruntjs/grunt-contrib-htmlmin.git#7464fde8c641f50c69c6ea9a5c201538bd15d5b2",
