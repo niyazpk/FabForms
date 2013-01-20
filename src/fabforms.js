@@ -63,6 +63,7 @@
             break;
         case 'textarea':
             html += ['<textarea data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input textarea ', item, '" name="', item, '" placeholder="', placeholder, '">', value, '</textarea>'].join('');
+            inputClass = [item];
             break;
         case 'check':
             html += ['<input type="checkbox" data-disablevalidation="' + disableValidation + '" data-datatype="' + datatype + '" class="form-item-input checkbox ', item, '" value="', value, '" name="', item, '" ', value ? 'checked="checked" ' : '', '>'].join('');

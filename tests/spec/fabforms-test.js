@@ -110,6 +110,23 @@ describe('FabForm', function() {
             expect(html).to.be.equals(expected);
         });
 
+        it('textarea item', function() {
+
+            var expected = '<div class="form-item description textarea"><label for="description">Street Address</label><div class="required">*</div><span class="description" item-type="textarea">Niyaz</span><textarea data-disablevalidation="false" data-datatype="textarea" class="form-item-input textarea description" name="description" placeholder="Street Address">Niyaz</textarea></div>';
+
+            var html = getformItemHTML('description', {
+                description: {
+                    type: "textarea",
+                    label: "Street Address",
+                    placeholder: "Street Address",
+                    required: true,
+                    maxlength: 250
+                },
+            }, 'Niyaz');
+
+            expect(html).to.be.equals(expected);
+        });
+
     });
 
 
