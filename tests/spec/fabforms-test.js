@@ -128,9 +128,9 @@ describe('FabForm', function() {
         });
 
 
-        it('checkbox item', function() {
+        it('checkbox item 1', function() {
 
-            var expected = '<div class="form-item offers check"><label for="offers">It\'s ok to send me some cool offers</label><span class="offers" item-type="check">Niyaz</span><input type="checkbox" data-disablevalidation="false" data-datatype="check" class="form-item-input checkbox offers" name="offers" value="Niyaz" checked="checked" ></div>';
+            var expected = '<div class="form-item offers check"><label for="offers">It\'s ok to send me some cool offers</label><span class="offers" item-type="check">1</span><input type="checkbox" data-disablevalidation="false" data-datatype="check" class="form-item-input checkbox offers" name="offers" value="1" checked="checked" ></div>';
 
             var html = getformItemHTML('offers', {
                 offers: {
@@ -138,7 +138,42 @@ describe('FabForm', function() {
                     label: "It's ok to send me some cool offers",
                     'default': 1
                 },
-            }, 'Niyaz');
+            }, 1);
+
+            expect(html).to.be.equals(expected);
+        });
+
+
+        it('checkbox item 2', function() {
+
+            var expected = '<div class="form-item offers check"><label for="offers">It\'s ok to send me some cool offers</label><span class="offers" item-type="check">Male</span><input type="checkbox" data-disablevalidation="false" data-datatype="check" class="form-item-input checkbox offers" name="offers" value="Male" checked="checked" ></div>';
+
+            var html = getformItemHTML('offers', {
+                offers: {
+                    type: 'check',
+                    label: "It's ok to send me some cool offers",
+                    // 'default': 1,
+                    onValue: 'Male',
+                    offValue: 'Female'
+                },
+            }, 'Male');
+
+            expect(html).to.be.equals(expected);
+        });
+
+        it('checkbox item 3', function() {
+
+            var expected = '<div class="form-item offers check"><label for="offers">It\'s ok to send me some cool offers</label><span class="offers" item-type="check">Female</span><input type="checkbox" data-disablevalidation="false" data-datatype="check" class="form-item-input checkbox offers" name="offers" value="Male" ></div>';
+
+            var html = getformItemHTML('offers', {
+                offers: {
+                    type: 'check',
+                    label: "It's ok to send me some cool offers",
+                    // 'default': 1,
+                    onValue: 'Male',
+                    offValue: 'Female'
+                },
+            }, 'Female');
 
             expect(html).to.be.equals(expected);
         });

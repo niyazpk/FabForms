@@ -66,7 +66,7 @@
             inputClass = ['form-item-input', 'textarea', item];
             break;
         case 'check':
-            html += ['<input type="checkbox"' + commonStr + ' value="{{value}}" ', value ? 'checked="checked" ' : '', '>'].join('');
+            html += ['<input type="checkbox"' + commonStr + ' value="' + onValue + '" ', (value === onValue ? 'checked="checked" ' : ''), '>'].join('');
             inputClass = ['form-item-input', 'checkbox', item];
             break;
         case 'static':
@@ -112,6 +112,7 @@
         default:
             log('Problem with json: ' + settings.service.url + ' : ' + dd[item].label);
         }
+
         html += '</div>';
 
         html = html.replace('{{disableValidation}}', disableValidation);
