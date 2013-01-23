@@ -65,7 +65,6 @@ function validateForm(form, dd) {
     for(var item in dd) {
 
         var disableValidation = $('.form-item-input.' + item,  form).data('disablevalidation') || false;
-        // log(item, dd[item], disableValidation);
 
         // if validation is disabled for this form-item
         if(disableValidation){

@@ -112,25 +112,22 @@ module.exports = function(grunt) {
           // sourceMapRoot: 'html/js' // the location to find your original source
         },
         files: {
-          'html/js/templates/templates.min.js': ['html/js/templates/templates.js'],
-          'html/js/lib/cookie-wrapper.min.js': [ 'html/js/lib/cookie-wrapper.js'],
-          'html/js/lib/jstorage.min.js': [ 'html/js/lib/jstorage.js'],
-          'html/js/lib/crypto.min.js': [ 'html/js/lib/crypto.js']
+          'dist/fabforms.min.js': ['src/fabforms.js', 'src/vd.js']
         }
       },
 
-      dist: {
-        options: {
-          // sourceMap: 'dist/sm/sm.js',
-          // sourceMappingURL: 'dist/',
-          // sourceMapRoot: 'dist/js' // the location to find your original source
-        },
-        files: grunt.file.expandMapping(['*.js'], 'dist/js', {
-          cwd: 'dist/js'
-        })
+      // dist: {
+      //   options: {
+      //     // sourceMap: 'dist/sm/sm.js',
+      //     // sourceMappingURL: 'dist/',
+      //     // sourceMapRoot: 'dist/js' // the location to find your original source
+      //   },
+      //   files: grunt.file.expandMapping(['*.js'], 'dist/js', {
+      //     cwd: 'dist/js'
+      //   })
 
-        // files: grunt.file.expandMapping(['**/*.js'], 'dist/js', { cwd: 'dist/js' })
-      }
+      //   // files: grunt.file.expandMapping(['**/*.js'], 'dist/js', { cwd: 'dist/js' })
+      // }
     },
 
     htmlmin: {
@@ -221,8 +218,8 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask('test', ['jshint', 'mocha']);
-  grunt.registerTask('build', ['clean', 'copy', 'hashres']);
-  grunt.registerTask('default', ['jshint', 'htmlmin', 'handlebars', 'uglify', 'sass']);
+  grunt.registerTask('build', ['jshint', 'mocha', 'clean', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'mocha']);
 
 };
 

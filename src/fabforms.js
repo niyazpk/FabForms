@@ -12,9 +12,9 @@
 
     getformItemHTML = function(item, dd, value) {
 
-        value = value || defaultValue;
-        var klass = dd[item].klass;   // any additional classes provided ?
         var defaultValue = dd[item]['default'] || '';
+        value = value || defaultValue || '';
+        var klass = dd[item].klass;   // any additional classes provided ?
         var placeholder = dd[item].placeholder || '';
         var datatype = (dd[item].datatype && dd[item].datatype.type) || dd[item].type;
         var disableValidation = dd[item].disableValidation || false;
@@ -105,9 +105,11 @@
             break;
         case 'image':
             html += ['<img class="form-item-input image ', item, '" name="', item, '" src="', value, '">'].join('');
+            inputClass = [];
             break;
         case 'html':
             html += dd[item].value;
+            inputClass = [];
             break;
         default:
             log('Problem with json: ' + settings.service.url + ' : ' + dd[item].label);
